@@ -10,7 +10,7 @@ border: 1px solid #000000
 .autorization-main {
     display:flex;
     flex-direction: column;
-    
+    justify-content: center;
     width: 320px;
 height: 426px;
 padding: 0px 24px 0px 24px;
@@ -55,9 +55,19 @@ color: #000000;
 }
 
 .autorization-main-inputarea {
+    display:flex;
+    flex-direction: column;
     width: 272px;
 height:110px;
 gap: 8px;
 opacity: 0px;
 
+}
+
+.button__primary {
+    align-self: center;
+}
+
+.footer {
+    position:static;
 }

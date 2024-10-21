@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import './Autorization.css';
 import autorizationMainLogo from './Autorization_icons/autorization-main-logo.svg';
 import Button from "../../components/ui/Button/Button";
+import Input from "../../components/ui/Input/Input";
+import Footer from "../../components/Footer/Footer";
 
 export const Autorization: React.FC = () => {
     const [login, setLogin] = useState<string>("");
@@ -30,7 +32,7 @@ export const Autorization: React.FC = () => {
 
             if (authToken) {
                 localStorage.setItem("authToken", authToken);
-                navigate("/main");
+                navigate("/");
             } else {
                 setError("Токен не найден в ответе.");
             }
@@ -51,32 +53,29 @@ export const Autorization: React.FC = () => {
                     </div>
                 </div>
                 <form className="autorization-main-inputarea" onSubmit={handleLogin}>
-                    <fieldset className="form-number">
-                        <legend className="legend"><p>Логин</p></legend>
-                        <input
+                        <Input
+                            htmlFor="loginInput"
+                            textLabel="Логин"
                             type="text"
-                            id="numberInput"
-                            name="numberInput"
-                            value={login}
-                            onChange={(e) => setLogin(e.target.value)}
+                            name="loginInput"
+                            setInitInputValue={setLogin}
                         />
-                    </fieldset>
-                    <fieldset className="form-number">
-                        <legend className="legend"><p>Пароль</p></legend>
-                        <input
+                        <Input
+                            htmlFor="passwordInput"
+                            textLabel="Пароль"
                             type="password"
-                            id="senderInput"
-                            name="senderInput"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            name="passwordInput"
+                            setInitInputValue={setPassword}
                         />
-                    </fieldset>
+                    <Button 
+                        className="form__btn button__primary"
+                        type="submit"  
+                        buttonText = 'Войти'
+                         />
                     {error && <div className="error-message">{error}</div>}
-                    <Button className="form-btn"
-                         type="submit"  buttonText = 'Войти'/>
-                    
                 </form>
             </div>
+            <Footer />
         </div>
     );
 };
