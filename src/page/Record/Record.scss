@@ -1,0 +1,15 @@
+.main-record {
+  height: calc(100vh - 87px);
+
+  .menu {
+    font-weight: 400;
+    line-height: 1.7;
+    padding-top: 8px;
+    color: var(--disabled-color);
+    &__item {
+      padding: 0.579em 0.8125em;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

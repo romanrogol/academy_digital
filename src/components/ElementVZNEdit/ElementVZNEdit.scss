@@ -1,0 +1,59 @@
+.modal-el-edit {
+  height: 480px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--colors-background-gray-100-main);
+  transform: scale(1);
+  z-index: 1;
+  .modal-header {
+    height: 38px;
+    &__title {
+      padding-top: 10.5px;
+    }
+  }
+  .icon__bottom-sheet {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+
+  .modal__content-info-el {
+    width: calc(100% - 16px);
+    margin: 0 auto;
+    .info-el {
+      margin-top: 62.5px;
+      margin-bottom: 4px;
+      p {
+        font-size: 12px;
+        line-height: 14px;
+        margin: 0;
+        margin-bottom: 2px;
+        font-weight: 500;
+      }
+    }
+    .el__block-input {
+      &-quantity {
+        display: flex;
+        gap: 6px;
+      }
+    }
+  }
+  .change-card__btn {
+    margin-bottom: 10px;
+    .button__primary-small {
+      white-space: nowrap;
+    }
+  }
+  .modal-header {
+    border-bottom: 1px solid var(--colors-outline-gray-900-border);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    width: 100%;
+    &__icon {
+      padding: 8px;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.modal-header {
+  border-bottom: 1px solid var(--colors-outline-gray-900-border);
+  display: flex;
+  height: 38px;
+  &__title {
+    margin: 0;
+    font-weight: 500;
+    padding: 10.5px 0;
+    letter-spacing: normal;
+    line-height: 17px;
+  }
+  &__icon {
+    padding: 8px;
+  }
+}

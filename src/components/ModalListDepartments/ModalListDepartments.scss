@@ -1,0 +1,24 @@
+.modal-list__deport {
+  height: 480px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--colors-background-gray-100-main);
+  transform: scale(1);
+  z-index: 1;
+  .modal-list__content {
+    height: 387px;
+    .list-deport {
+      width: calc(100% - 16px);
+      height: 379px;
+      border: 1px solid var(--colors-outline-gray-900-border);
+      margin: 4px 8px;
+      border-radius: 4px;
+      &__item {
+        border-bottom: 0.2px solid
+          var(--colors-outline-gray-900-border, #79747e);
+      }
+    }
+  }
+}

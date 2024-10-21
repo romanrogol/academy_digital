@@ -1,0 +1,18 @@
+.add-vzn-rate {
+  height: 480px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--colors-background-gray-100-main);
+  transform: scale(1);
+  z-index: 1;
+  .modal__content {
+    height: 387px;
+    width: calc(100% - 16px);
+    margin: 0 auto;
+    .form {
+      margin-top: 12px;
+    }
+  }
+}

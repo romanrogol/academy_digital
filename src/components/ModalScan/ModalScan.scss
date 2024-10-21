@@ -1,0 +1,24 @@
+.modal {
+  height: calc(100% - 64px);
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: var(--colors-background-gray-100-main);
+  transform: scale(1);
+  z-index: 1;
+  .modal__content {
+    &--text {
+      margin: 97px 8px 10px 8px;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 17px;
+    }
+    .form {
+      margin: 0 8px;
+      .wrapper__btn {
+        margin-top: 10px;
+      }
+    }
+  }
+}
