@@ -1,0 +1,24 @@
+.main-home {
+  height: calc(100vh - 87px);
+  position: relative;
+
+  .menu {
+    font-weight: 400;
+    line-height: 1.7;
+    padding-top: 8px;
+    color: var(--disabled-color);
+    &__item {
+      padding: 0.32em 0.8125em;
+      display: flex;
+      align-items: center;
+      color: var(--colors-outline-gray-400-disabled);
+      &:first-child {
+        color: var(--Colors-Text-Black-300);
+      }
+    }
+    &__link {
+      color: var(--disabled-color);
+      padding: 3.625px 12px;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+.form__field-container {
+  width: 100%;
+  margin: 0 auto;
+  .form__type-select {
+    position: relative;
+    border-radius: 4px;
+
+    .form__label {
+      top: -5px;
+      background: var(--colors-background-gray-100-main);
+    }
+
+    .select__icon-default {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      margin-top: -12px;
+      pointer-events: none;
+    }
+
+    .select__placeholder {
+      display: block;
+      height: 45px;
+      padding: 15px 36px 15px 8px;
+      border: 1px solid var(--colors-outline-gray-900-border);
+      border-radius: 4px;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 15px;
+      color: rgba(0, 0, 0, 0.6);
+      background: transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &[data-status="default"] {
+        border: 1px solid rgba(0, 0, 0, 0.6);
+      }
+
+      &[data-status="invalid"] {
+        border: 1px solid rgba(255, 0, 0, 1);
+      }
+
+      &[data-selected="true"] {
+        color: rgb(0, 0, 0);
+      }
+    }
+
+    &[data-is-active="true"] .select__icon-default {
+      transform: scale(-1);
+      top: 16px;
+    }
+
+    &[data-is-active="true"] .select__placeholder {
+      border: 3px solid var(--border-color-focus);
+      border-radius: 4px;
+    }
+
+    &:not([data-is-active="true"])
+      .select__placeholder:not([data-status="invalid"]):hover {
+      border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .select__list {
+      position: absolute;
+      top: 46px;
+      list-style: none;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      z-index: 10;
+    }
+
+    .option {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 6px 4px;
+      border: 1px solid var(--colors-outline-gray-300-light);
+      border-bottom: 0;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 18px;
+      background: #ece6f0;
+      &:first-child {
+        height: 30px;
+        padding: 0;
+        border-top: 1px solid var(--colors-outline-gray-300-light);
+        border-radius: 4px 4px 0 0;
+      }
+      &:last-child {
+        border-bottom: 1px solid var(--colors-outline-gray-300-light);
+        border-radius: 0 0 4px 4px;
+      }
+    }
+  }
+}

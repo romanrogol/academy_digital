@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --colors-primary-400-main: #2d609b;
+  --colors-primary-500-variant: #4680b0;
+  --colors-primary-100-variant: #0d1e4a;
+  --Colors-Success-100: #d1fadf;
+  --Colors-Success-500: #12b76a;
+  --colors-background-gray-100-main: #f2f2f2;
+  --colors-background-gray-200-modal: #f7f2fa;
+  --colors-background-gray-500-disabled: #dcd8e0;
+  --Colors-Background-Blue-300: #bad0e2;
+  --colors-outline-gray-300-light: #d3d3d3;
+  --colors-outline-gray-300-icons: #c4cdd5;
+  --colors-outline-gray-400-disabled: #bcbabf;
+  --colors-outline-gray-900-border: #79747e;
+  --Colors-Text-Black-300: #333333;
+  --Colors-Text-Black-200: #49454f;
+  --Accent: #7ebbed;
+  --error-color: #ff0000;
+  --border-color-focus: #6750a4;
+  --Colors-Text-Gray-400: #a8a3ab;
+}
+
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--Colors-Text-Black-300);
+}
+
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+  margin: 0;
+}
+
+:where(ul[class]) {
+  list-style: none;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+body {
+  height: 480px;
+  line-height: 1.5;
+  font-family: "Roboto";
+  color: var(--Colors-Text-Black-300);
+  font-size: 0.875rem;
+  letter-spacing: 0.0416em;
+  background: var(--colors-background-gray-100-main);
+}
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
