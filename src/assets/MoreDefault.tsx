@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // import { FC } from "react";
 
 // const MoreDefault: FC = () => {
@@ -47,13 +46,6 @@ const MoreDefault: FC<MoreDefaultProps> = ({ onClick }) => {
           aria-label="Open bottom sheet"
           tabIndex={0}>
       <>
-=======
-import { FC } from "react";
-
-const MoreDefault: FC = () => {
-  return (
-    <>
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
       <svg
         width="24"
         height="24"
@@ -73,12 +65,8 @@ const MoreDefault: FC = () => {
           </clipPath>
         </defs>
       </svg>
-<<<<<<< HEAD
       </>
     </div>
-=======
-    </>
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
   );
 };
 
