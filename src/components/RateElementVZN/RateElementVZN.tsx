@@ -6,10 +6,7 @@ import Input from "../ui/Input/Input";
 import "./RateElementVZN.scss";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { Pagination } from "../Pagination/Pagination";
-=======
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
 
 // СТРАНИЦА ПРОСМОТР СОСТАВА (РАСХОД)
 
@@ -26,12 +23,9 @@ const RateElementVZN: FC<RateElementVZNProps> = ({}) => {
   const closeModal = () => {
     navigate(-1);
   };
-<<<<<<< HEAD
 
   const totalPages = 3;
 
-=======
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
   return (
     <>
       <div className={"modal-el"}>
@@ -74,11 +68,7 @@ const RateElementVZN: FC<RateElementVZNProps> = ({}) => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
         <Pagination totalPages={totalPages}/>
-=======
-        <div>Здесь будет пагинация</div>
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
       </div>
       <Footer />
     </>

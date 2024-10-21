@@ -9,11 +9,8 @@ import "./ElementVZNEdit.scss";
 import MoreDefault from "../../assets/MoreDefault";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { BottomSheet } from "../BottomSheet/BottomSheet";
 import { Pagination } from "../Pagination/Pagination";
-=======
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
 
 // СТРАНИЦА РЕДАКТИРОВАНИЕ СОСТАВА
 
@@ -24,12 +21,9 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({}) => {
   const [inputReceivedInitValue, setInputReceivedInitValue] = useState("");
   const [inputNumberInitValue, setInputNumberInitValue] = useState("");
   const [numberVZNValue, setNumberVZNValue] = useState("");
-<<<<<<< HEAD
   const [bottomSheetActive, setBottomSheetActive] = useState<boolean>(false);
 
   const totalPages = 2;
-=======
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
 
   const navigate = useNavigate();
 
@@ -45,11 +39,7 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({}) => {
           goBack={closeModal}
         />
         <div className="icon__bottom-sheet">
-<<<<<<< HEAD
           <MoreDefault onClick={() => setBottomSheetActive(true)}/>
-=======
-          <MoreDefault />
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
         </div>
         <div className="modal__content-info-el">
           <div className="info-el">
@@ -97,11 +87,7 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({}) => {
                 />
               </div>
             </div>
-<<<<<<< HEAD
             <Pagination totalPages={totalPages} />
-=======
-            <div>Здесь будет пагинация</div>
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
             <div className="wrapper__btn">
               <div
                 onClick={() => navigate("/vzn_rate-add-vzn-info")}
@@ -122,10 +108,7 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({}) => {
             </div>
           </form>
         </div>
-<<<<<<< HEAD
         <BottomSheet isOpen={bottomSheetActive} onClose={() => setBottomSheetActive(false)} />
-=======
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
       </div>
       <Footer />
     </>

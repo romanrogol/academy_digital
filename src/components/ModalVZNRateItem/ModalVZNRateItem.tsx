@@ -4,10 +4,7 @@ import "./ModalVZNRateItem.scss";
 import MoreDefault from "../../assets/MoreDefault";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
 import { BottomSheet } from "../BottomSheet/BottomSheet";
-=======
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
 
 // Страница ВЗН (Инфа о ВЗН) (Расход)
 
@@ -22,11 +19,7 @@ const ModalVZNRateItem: FC<ModalVZNRateItemProps> = ({}) => {
       <div className={"modal-info-rate"}>
         <ModalHeader
           headerTitle={"Здесь будет элемент ВЗН (Расход)"}
-<<<<<<< HEAD
           icon={<MoreDefault onClick={() => setBottomSheetActive(true)}/>}
-=======
-          icon={<MoreDefault />}
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
         />
         <div className="header__info">
           <p>Отправитель:</p>
@@ -44,10 +37,7 @@ const ModalVZNRateItem: FC<ModalVZNRateItemProps> = ({}) => {
             </div>
           </div>
         </div>
-<<<<<<< HEAD
         <BottomSheet isOpen={bottomSheetActive} onClose={() => setBottomSheetActive(false)} />
-=======
->>>>>>> 32b1e6c509d1c063bdd5ee687a2ffcd430ebe3b7
       </div>
       <Footer />
     </>
