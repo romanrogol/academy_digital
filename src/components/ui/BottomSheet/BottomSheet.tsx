@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./BottomSheet.scss";
+import { Link } from "react-router-dom";
 
 interface BottomSheetProps {
   isOpen: boolean;
@@ -69,48 +70,64 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({
       }
     };
 
-    window.addEventListener('touchmove', handleTouchMoveWithDrag, { passive: false });
-    window.addEventListener('touchend', handleTouchEnd);
+    window.addEventListener("touchmove", handleTouchMoveWithDrag, {
+      passive: false,
+    });
+    window.addEventListener("touchend", handleTouchEnd);
 
     return () => {
-      window.removeEventListener('touchmove', handleTouchMoveWithDrag);
-      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener("touchmove", handleTouchMoveWithDrag);
+      window.removeEventListener("touchend", handleTouchEnd);
     };
   }, [isDragging]);
 
   return (
     <div
-      className={`bottomsheet-wrap ${isOpen ? 'open' : ''}`}
+      className={`bottomsheet-wrap ${isOpen ? "open" : ""}`}
       style={{
-        height: isOpen || isAnimating ? `${height}px` : '0px',
+        height: isOpen || isAnimating ? `${height}px` : "0px",
         opacity: isOpen || isAnimating ? 1 : 0,
-        transform: isOpen || isAnimating ? 'translateY(0)' : 'translateY(100%)',
-        transition: 'height 0.3s ease, opacity 0.3s ease, transform 0.3s ease',
+        transform: isOpen || isAnimating ? "translateY(0)" : "translateY(100%)",
+        transition: "height 0.3s ease, opacity 0.3s ease, transform 0.3s ease",
       }}
       role="dialog"
       aria-modal="true"
     >
-      <div
-        className="bottomsheet-wrap-swipe"
-        onTouchStart={handleTouchStart}
-      >
+      <div className="bottomsheet-wrap-swipe" onTouchStart={handleTouchStart}>
         <div className="bottomsheet-swipe"></div>
       </div>
       <ul className="bottomsheet-menu-list">
         <div className="bottomsheet-info_bo">
           <div className="bottomsheet-info_bo-textcontainer">
             <p className="bottomsheet-info_bo-label">Информация о БО</p>
-            <p className="bottomsheet-info_bo-text">Отображать доп. информацию о БО</p>
+            <p className="bottomsheet-info_bo-text">
+              Отображать доп. информацию о БО
+            </p>
           </div>
-          <div className="bottomsheet-info_bo-tipscontainer" onClick={handleToggle}>
-            <div className={`bottomsheet-info_bo-switch ${isToggled ? 'toggled' : ''}`}>
+          <div
+            className="bottomsheet-info_bo-tipscontainer"
+            onClick={handleToggle}
+          >
+            <div
+              className={`bottomsheet-info_bo-switch ${
+                isToggled ? "toggled" : ""
+              }`}
+            >
               <div className="bottomsheet-info_bo-ellipse"></div>
             </div>
           </div>
         </div>
-        <li><p>Перевод с НеУтв на Принят</p></li>
-        <li><p>Перевод с НеУтв на Утв</p></li>
-        <li><p>Перевод с НеУтв на 1С</p></li>
+        <li>
+          <Link to={"/operation"}>
+            <p>Перевод с НеУтв на Принят</p>
+          </Link>
+        </li>
+        <li>
+          <p>Перевод с НеУтв на Утв</p>
+        </li>
+        <li>
+          <p>Перевод с НеУтв на 1С</p>
+        </li>
       </ul>
     </div>
   );

@@ -1,19 +1,11 @@
 .modal-filter {
   height: calc(100% - 64px);
   width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
   background: var(--colors-background-gray-100-main);
-  transform: scale(1);
-  z-index: 1;
   &__content {
     margin-top: 66px;
     .form {
       margin: 0 8px;
     }
   }
-  //   &.active {
-  //     transform: scale(1);
-  //   }
 }

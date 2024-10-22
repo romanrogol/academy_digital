@@ -84,7 +84,6 @@ const Authorization: FC<AuthorizationProps> = ({ isAuth, setIsAuth }) => {
           {error && <div className="error-message">{error}</div>}
         </form>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -20,6 +20,7 @@ import ElementVZNEdit from "../ElementVZNEdit/ElementVZNEdit";
 import ElementVZNAdd from "../ElementVZNAdd/ElementVZNAdd";
 import ModalScan from "../ModalScan/ModalScan";
 import ModalListDepartments from "../ModalListDepartments/ModalListDepartments";
+import Operation from "../Operation/Operation";
 
 const AppRouts: FC = () => {
   return (
@@ -48,6 +49,7 @@ const AppRouts: FC = () => {
         <Route path="/vzn_rate-add-tmc-element" element={<ElementVZNAdd />} />
         <Route path="/vzn_rate-edit-tmc-element" element={<ElementVZNEdit />} />
         <Route path="/modal-list__deport" element={<ModalListDepartments />} />
+        <Route path="/operation" element={<Operation />} />
       </Routes>
     </div>
   );

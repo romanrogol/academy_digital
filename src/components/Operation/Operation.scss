@@ -1,0 +1,35 @@
+.operation__block {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 22px;
+  width: 100%;
+  letter-spacing: 0.25px;
+  &-text {
+    width: calc(100% - 16px);
+    margin: 0 auto;
+    .block-text-operation {
+      margin-top: 101.5px;
+      .operation-text {
+        width: 100%;
+        margin-bottom: 4px;
+        &-spec {
+          font-weight: 500;
+          letter-spacing: 0.25px;
+        }
+      }
+    }
+  }
+  .operation-text-info {
+    display: flex;
+    flex-direction: column;
+    p {
+      margin: 0;
+    }
+  }
+  .wrapper-btn {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+}

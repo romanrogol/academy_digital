@@ -4,6 +4,7 @@ import Close from "../../assets/Close";
 
 import "./ModalListDepartments.scss";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 interface ModalListDepartmentsProps {}
 
@@ -26,6 +27,7 @@ const ModalListDepartments: FC<ModalListDepartmentsProps> = ({}) => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
