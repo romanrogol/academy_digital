@@ -9,7 +9,7 @@ import "./ElementVZNEdit.scss";
 import MoreDefault from "../../assets/MoreDefault";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import { BottomSheet } from "../BottomSheet/BottomSheet";
+import { BottomSheet } from "../ui/BottomSheet/BottomSheet";
 import { Pagination } from "../Pagination/Pagination";
 
 // СТРАНИЦА РЕДАКТИРОВАНИЕ СОСТАВА
@@ -39,7 +39,7 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({}) => {
           goBack={closeModal}
         />
         <div className="icon__bottom-sheet">
-          <MoreDefault onClick={() => setBottomSheetActive(true)}/>
+          <MoreDefault onClick={() => setBottomSheetActive(true)} />
         </div>
         <div className="modal__content-info-el">
           <div className="info-el">
@@ -108,7 +108,10 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({}) => {
             </div>
           </form>
         </div>
-        <BottomSheet isOpen={bottomSheetActive} onClose={() => setBottomSheetActive(false)} />
+        <BottomSheet
+          isOpen={bottomSheetActive}
+          onClose={() => setBottomSheetActive(false)}
+        />
       </div>
       <Footer />
     </>

@@ -1,12 +1,15 @@
-import React, { useState, useRef, useEffect } from 'react';
-import './BottomSheet.css';
+import React, { useState, useRef, useEffect } from "react";
+import "./BottomSheet.scss";
 
 interface BottomSheetProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose }) => {
+export const BottomSheet: React.FC<BottomSheetProps> = ({
+  isOpen,
+  onClose,
+}) => {
   const [height, setHeight] = useState<number>(0); // Начальная высота
   const [isAnimating, setIsAnimating] = useState<boolean>(false); // Состояние анимации
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -24,24 +27,24 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose }) => 
   const handleMouseMove = (e: MouseEvent) => {
     if (!isDragging) return;
 
-    const deltaY = e.clientY - startY.current; 
+    const deltaY = e.clientY - startY.current;
     const newHeight = Math.max(100, initialHeight.current - deltaY); // Минимальная высота
 
-    const maxHeight = 480; 
-    const upperLimit = maxHeight * 0.7; 
-    const lowerLimit = maxHeight * 0.25; 
+    const maxHeight = 480;
+    const upperLimit = maxHeight * 0.7;
+    const lowerLimit = maxHeight * 0.25;
 
     if (newHeight >= upperLimit) {
-      setHeight(maxHeight); 
+      setHeight(maxHeight);
     } else if (newHeight <= lowerLimit) {
-      setIsAnimating(true); 
-      setHeight(0); 
+      setIsAnimating(true);
+      setHeight(0);
       setTimeout(() => {
-        onClose(); 
-        setIsAnimating(false); 
-      }, 300); 
+        onClose();
+        setIsAnimating(false);
+      }, 300);
     } else {
-      setHeight(newHeight); 
+      setHeight(newHeight);
     }
   };
 
@@ -55,8 +58,8 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose }) => 
 
   useEffect(() => {
     if (isOpen) {
-      setHeight(144); 
-      setIsAnimating(false); 
+      setHeight(144);
+      setIsAnimating(false);
     }
   }, [isOpen]);
 
@@ -67,48 +70,60 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ isOpen, onClose }) => 
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMoveWithDrag);
-    window.addEventListener('mouseup', handleMouseUp);
+    window.addEventListener("mousemove", handleMouseMoveWithDrag);
+    window.addEventListener("mouseup", handleMouseUp);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMoveWithDrag);
-      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMoveWithDrag);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [isDragging]);
 
   const dynamicStyle = {
-    height: isOpen || isAnimating ? `${height}px` : '0px',
+    height: isOpen || isAnimating ? `${height}px` : "0px",
     opacity: isOpen || isAnimating ? 1 : 0,
-    transform: isOpen || isAnimating ? 'translateY(0)' : 'translateY(100%)',
-    transition: 'height 0.3s ease, opacity 0.3s ease, transform 0.3s ease',
+    transform: isOpen || isAnimating ? "translateY(0)" : "translateY(100%)",
+    transition: "height 0.3s ease, opacity 0.3s ease, transform 0.3s ease",
   };
 
   return (
     <div
-      className={`bottomsheet-wrap ${isOpen ? 'open' : ''}`}
+      className={`bottomsheet-wrap ${isOpen ? "open" : ""}`}
       style={dynamicStyle}
     >
-      <div
-        className="bottomsheet-wrap-swipe"
-        onMouseDown={handleMouseDown}
-      >
+      <div className="bottomsheet-wrap-swipe" onMouseDown={handleMouseDown}>
         <div className="bottomsheet-swipe"></div>
       </div>
       <ul className="bottomsheet-menu-list">
         <div className="bottomsheet-info_bo">
           <div className="bottomsheet-info_bo-textcontainer">
             <p className="bottomsheet-info_bo-label">Информация о БО</p>
-            <p className="bottomsheet-info_bo-text">Отображать доп. информацию о БО</p>
+            <p className="bottomsheet-info_bo-text">
+              Отображать доп. информацию о БО
+            </p>
           </div>
-          <div className="bottomsheet-info_bo-tipscontainer" onClick={handleToggle}>
-            <div className={`bottomsheet-info_bo-switch ${isToggled ? 'toggled' : ''}`}>
+          <div
+            className="bottomsheet-info_bo-tipscontainer"
+            onClick={handleToggle}
+          >
+            <div
+              className={`bottomsheet-info_bo-switch ${
+                isToggled ? "toggled" : ""
+              }`}
+            >
               <div className="bottomsheet-info_bo-ellipse"></div>
             </div>
           </div>
         </div>
-        <li><p>Перевод с НеУтв на Принят</p></li>
-        <li><p>Перевод с НеУтв на Утв</p></li>
-        <li><p>Перевод с НеУтв на 1С</p></li>
+        <li>
+          <p>Перевод с НеУтв на Принят</p>
+        </li>
+        <li>
+          <p>Перевод с НеУтв на Утв</p>
+        </li>
+        <li>
+          <p>Перевод с НеУтв на 1С</p>
+        </li>
       </ul>
     </div>
   );

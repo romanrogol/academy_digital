@@ -5,7 +5,7 @@ import MoreDefault from "../../assets/MoreDefault";
 import "./ModalVZNReceiptItem.scss";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import { BottomSheet } from "../BottomSheet/BottomSheet";
+import { BottomSheet } from "../ui/BottomSheet/BottomSheet";
 
 // Страница ВЗН (ИНФА о ВЗН) (ПРИХОД)
 
@@ -19,7 +19,7 @@ const ModalVZNReceiptItem: FC<ModalVZNReceiptItemProps> = ({}) => {
       <div className={"modal-info-vzn"}>
         <ModalHeader
           headerTitle={"Здесь будет элемент ВЗН (Приход)"}
-          icon={<MoreDefault onClick={() => setBottomSheetActive(true)}/>}
+          icon={<MoreDefault onClick={() => setBottomSheetActive(true)} />}
         />
         <div className="header__info">
           <p>Отправитель:</p>
@@ -37,7 +37,10 @@ const ModalVZNReceiptItem: FC<ModalVZNReceiptItemProps> = ({}) => {
             </div>
           </div>
         </div>
-        <BottomSheet isOpen={bottomSheetActive} onClose={() => setBottomSheetActive(false)} />
+        <BottomSheet
+          isOpen={bottomSheetActive}
+          onClose={() => setBottomSheetActive(false)}
+        />
       </div>
       <Footer />
     </>
