@@ -20,14 +20,12 @@ import ElementVZNEdit from "../ElementVZNEdit/ElementVZNEdit";
 import ElementVZNAdd from "../ElementVZNAdd/ElementVZNAdd";
 import ModalScan from "../ModalScan/ModalScan";
 import ModalListDepartments from "../ModalListDepartments/ModalListDepartments";
-import { Autorization } from "../../page/Autorization/Autorization";
 
 const AppRouts: FC = () => {
   return (
     <div className="wrapper">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Autorization" element={<Autorization />} />
         <Route path="/setting" element={<Setting />} />
         <Route path="/task" element={<Tasks />} />
         <Route path="/record" element={<Record />} />

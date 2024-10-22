@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -7,8 +7,10 @@ import "./Home.scss";
 import BriefCase from "../../assets/BriefCase";
 import InfoCircle from "../../assets/InfoCircle";
 import SettingIcon from "../../assets/SettingIcon";
+import Authorization from "../../components/Authorization/Authorization";
 
 const Home: FC = () => {
+  const [isAuth, setIsAuth] = useState(false);
   return (
     <>
       <Header titleHeader="Меню" />
@@ -33,6 +35,7 @@ const Home: FC = () => {
         </ul>
       </main>
       <Footer />
+      <Authorization isAuth={isAuth} setIsAuth={setIsAuth} />
     </>
   );
 };

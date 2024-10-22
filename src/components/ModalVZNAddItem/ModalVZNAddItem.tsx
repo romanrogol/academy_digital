@@ -7,7 +7,7 @@ import Button from "../ui/Button/Button";
 import Add from "../../assets/Add";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import { BottomSheet } from "../BottomSheet/BottomSheet";
+import { BottomSheet } from "../ui/BottomSheet/BottomSheet";
 
 // СТРАНИЦА ВЗН (ИНФА О ВЗН) (РАСХОД)
 
@@ -23,7 +23,7 @@ const ModalVZNAddRateItem: FC<ModalVZNAddRateItemProps> = ({}) => {
       <div className={"modal-vzn-add"}>
         <ModalHeader
           headerTitle={`ВЗН №${numberVZNValue} (Расход)`}
-          icon={<MoreDefault onClick={() => setBottomSheetActive(true)}/>}
+          icon={<MoreDefault onClick={() => setBottomSheetActive(true)} />}
         />
         <div className="header__info">
           <p>Отправитель:</p>
@@ -51,7 +51,10 @@ const ModalVZNAddRateItem: FC<ModalVZNAddRateItemProps> = ({}) => {
             </div>
           </div>
         </div>
-        <BottomSheet isOpen={bottomSheetActive} onClose={() => setBottomSheetActive(false)} />
+        <BottomSheet
+          isOpen={bottomSheetActive}
+          onClose={() => setBottomSheetActive(false)}
+        />
       </div>
       <Footer />
     </>
