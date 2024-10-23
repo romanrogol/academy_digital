@@ -14,6 +14,7 @@ interface InputSpecProps {
   modalListDepartActive: boolean;
   setModalListDepartActive: (modalListDepartActive: boolean) => void;
   initInputValue: string | number;
+  vznCountValue: (value: number) => void;
 }
 
 const InputSpec: FC<InputSpecProps> = ({
@@ -25,6 +26,7 @@ const InputSpec: FC<InputSpecProps> = ({
   setInitInputValue,
   inputIcon,
   initInputValue,
+  vznCountValue,
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInitInputValue(e.target.value);
@@ -33,6 +35,10 @@ const InputSpec: FC<InputSpecProps> = ({
   const navigate = useNavigate();
 
   const handleClick = () => {
+    if (typeof initInputValue === "number") {
+      vznCountValue(initInputValue);
+      return;
+    }
     navigate("/modal-list__deport");
   };
 

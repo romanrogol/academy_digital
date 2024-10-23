@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../../page/Home/Home";
 import Setting from "../../page/Setting/Setting";
@@ -23,6 +23,8 @@ import ModalListDepartments from "../ModalListDepartments/ModalListDepartments";
 import Operation from "../Operation/Operation";
 
 const AppRouts: FC = () => {
+  const [numberVZNValue, setNumberVZNValue] = useState(0);
+
   return (
     <div className="wrapper">
       <Routes>
@@ -39,17 +41,40 @@ const AppRouts: FC = () => {
         <Route path="/vzn_rate" element={<ModalVZNRate />} />
         <Route path="/vzn_rate-info" element={<ModalVZNRateItem />} />
         <Route path="/vzn_rate-element" element={<RateElementVZN />} />
-        <Route path="/vzn_rate-add-vzn" element={<AddVZNRate />} />
+        <Route
+          path="/vzn_rate-add-vzn"
+          element={
+            <AddVZNRate
+              numberVZNValue={numberVZNValue}
+              setNumberVZNValue={setNumberVZNValue}
+            />
+          }
+        />
         <Route
           path="/vzn_rate-add-vzn-info"
-          element={<ModalVZNAddRateItem />}
+          element={<ModalVZNAddRateItem numberVZNValue={numberVZNValue} />}
         />
-        <Route path="/vzn_rate-add-tmc-add" element={<ElementVZNSearch />} />
-        <Route path="/vzn_rate-add-tmc-choice" element={<ElementVZNChoice />} />
-        <Route path="/vzn_rate-add-tmc-element" element={<ElementVZNAdd />} />
-        <Route path="/vzn_rate-edit-tmc-element" element={<ElementVZNEdit />} />
+        <Route
+          path="/vzn_rate-add-tmc-add"
+          element={<ElementVZNSearch numberVZNValue={numberVZNValue} />}
+        />
+        <Route
+          path="/vzn_rate-add-tmc-choice"
+          element={<ElementVZNChoice numberVZNValue={numberVZNValue} />}
+        />
+        <Route
+          path="/vzn_rate-add-tmc-element"
+          element={<ElementVZNAdd numberVZNValue={numberVZNValue} />}
+        />
+        <Route
+          path="/vzn_rate-edit-tmc-element"
+          element={<ElementVZNEdit numberVZNValue={numberVZNValue} />}
+        />
         <Route path="/modal-list__deport" element={<ModalListDepartments />} />
-        <Route path="/operation" element={<Operation />} />
+        <Route
+          path="/operation"
+          element={<Operation numberVZNValue={numberVZNValue} />}
+        />
       </Routes>
     </div>
   );

@@ -22,6 +22,10 @@
     background: transparent;
     outline: none;
     margin-bottom: 10px;
+    &:focus {
+      border: 3px solid var(--border-color-focus);
+      border-radius: 4px;
+    }
   }
   .form__error {
     display: block;

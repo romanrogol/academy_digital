@@ -13,17 +13,24 @@ import Footer from "../Footer/Footer";
 
 // Страница Создать ВЗН (РАСХОД)
 
-interface AddVZNRateProps {}
+interface AddVZNRateProps {
+  numberVZNValue: number;
+  setNumberVZNValue: (numberVZNValue: number) => void;
+}
 
-const AddVZNRate: FC<AddVZNRateProps> = ({}) => {
-  const [numberVZNValue, setNumberVZNValue] = useState(0);
+const AddVZNRate: FC<AddVZNRateProps> = ({
+  numberVZNValue,
+  setNumberVZNValue,
+}) => {
   const [senderVZNValue, setSenderVZNValue] = useState("");
   const [recipientVZNValue, setRecipientVZNValue] = useState("");
   const [nameVZNValue, setNameVZNValue] = useState("");
   const [nameRecVZNValue, setNameRecVZNValue] = useState("");
   const [dateVZNValue, setDateVZNValue] = useState("");
 
-  const [addVZNRateActive, setAddVZNRateActive] = useState(false);
+  const vznCountValue = (value: number) => {
+    setNumberVZNValue(value + 1);
+  };
 
   const navigate = useNavigate();
 
@@ -54,6 +61,7 @@ const AddVZNRate: FC<AddVZNRateProps> = ({}) => {
               initInputValue={numberVZNValue}
               setInitInputValue={setNumberVZNValue}
               inputIcon={<LeftArrow />}
+              vznCountValue={vznCountValue}
             />
             <InputSpec
               htmlFor={"sender"}

@@ -10,16 +10,19 @@ import Footer from "../Footer/Footer";
 
 // Страница добавления ТМЦ (ШАГ 1)
 
-interface ElementVZNSearchProps {}
+interface ElementVZNSearchProps {
+  numberVZNValue: number;
+}
 
-const ElementVZNSearch: FC<ElementVZNSearchProps> = ({}) => {
+const ElementVZNSearch: FC<ElementVZNSearchProps> = ({ numberVZNValue }) => {
   const [initNumberCard, setInitNumberCard] = useState("");
   const [initDesignationCard, setInitDesignationCard] = useState("");
   const [initNameCard, setInitNameCard] = useState("");
   const [initCodeCard, setInitCodeCard] = useState("");
 
+  console.log(numberVZNValue);
+
   const [elementVZNSearchActive, setElementVZNSearchActive] = useState(false);
-  const [numberVZNValue, setNumberVZNValue] = useState("");
 
   const navigate = useNavigate();
 

@@ -11,13 +11,14 @@ import { useNavigate } from "react-router-dom";
 
 // СТРАНИЦА ВЗН Добавление ТМЦ
 
-interface ElementVZNAddProps {}
+interface ElementVZNAddProps {
+  numberVZNValue: number;
+}
 
-const ElementVZNAdd: FC<ElementVZNAddProps> = ({}) => {
+const ElementVZNAdd: FC<ElementVZNAddProps> = ({ numberVZNValue }) => {
   const [inputIssuedInitValue, setInputIssuedInitValue] = useState("");
   const [inputReceivedInitValue, setInputReceivedInitValue] = useState("");
   const [inputNumberInitValue, setInputNumberInitValue] = useState("");
-  const [numberVZNValue, setNumberVZNValue] = useState("");
 
   const navigate = useNavigate();
 

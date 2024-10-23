@@ -11,10 +11,13 @@ import { BottomSheet } from "../ui/BottomSheet/BottomSheet";
 
 // СТРАНИЦА ВЗН (ИНФА О ВЗН) (РАСХОД)
 
-interface ModalVZNAddRateItemProps {}
+interface ModalVZNAddRateItemProps {
+  numberVZNValue: number;
+}
 
-const ModalVZNAddRateItem: FC<ModalVZNAddRateItemProps> = ({}) => {
-  const [numberVZNValue, setnumberVZNValue] = useState("");
+const ModalVZNAddRateItem: FC<ModalVZNAddRateItemProps> = ({
+  numberVZNValue,
+}) => {
   const [bottomSheetActive, setBottomSheetActive] = useState<boolean>(false);
 
   const navigate = useNavigate();

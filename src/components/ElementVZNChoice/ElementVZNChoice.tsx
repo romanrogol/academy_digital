@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 
 // СТРАНИЦА ВЗН ДОБАВЛЕНИЯ ТМЦ (ШАГ 2)
 
-interface ElementVZNChoiceProps {}
+interface ElementVZNChoiceProps {
+  numberVZNValue: number;
+}
 
-const ElementVZNChoice: FC<ElementVZNChoiceProps> = ({}) => {
-  const [numberVZNValue, setNumberVZNValue] = useState("");
-
+const ElementVZNChoice: FC<ElementVZNChoiceProps> = ({ numberVZNValue }) => {
   const navigate = useNavigate();
 
   const closeModal = () => {

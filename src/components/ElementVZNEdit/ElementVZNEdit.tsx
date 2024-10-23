@@ -14,13 +14,14 @@ import { Pagination } from "../Pagination/Pagination";
 
 // СТРАНИЦА РЕДАКТИРОВАНИЕ СОСТАВА
 
-interface ElementVZNEditProps {}
+interface ElementVZNEditProps {
+  numberVZNValue: number;
+}
 
-const ElementVZNEdit: FC<ElementVZNEditProps> = ({}) => {
+const ElementVZNEdit: FC<ElementVZNEditProps> = ({ numberVZNValue }) => {
   const [inputIssuedInitValue, setInputIssuedInitValue] = useState("");
   const [inputReceivedInitValue, setInputReceivedInitValue] = useState("");
   const [inputNumberInitValue, setInputNumberInitValue] = useState("");
-  const [numberVZNValue, setNumberVZNValue] = useState("");
   const [bottomSheetActive, setBottomSheetActive] = useState<boolean>(false);
 
   const totalPages = 2;

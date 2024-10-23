@@ -8,7 +8,11 @@ import "./Operation.scss";
 import LineTitle from "../ui/LineTitle/LineTitle";
 import Button from "../ui/Button/Button";
 
-const Operation: FC = () => {
+interface OperationProps {
+  numberVZNValue: number;
+}
+
+const Operation: FC<OperationProps> = ({ numberVZNValue }) => {
   const navigate = useNavigate();
 
   const closeModal = () => {
@@ -33,7 +37,9 @@ const Operation: FC = () => {
             <LineTitle />
             <div className="operation-text-info">
               <p>
-                <span className="operation-text-spec">ВЗН №15</span>
+                <span className="operation-text-spec">
+                  ВЗН №{numberVZNValue}
+                </span>
               </p>
               <p>
                 <span className="operation-text-spec">Отправитель: </span>Цех 01
