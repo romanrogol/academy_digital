@@ -1,18 +1,42 @@
 .modal-list__deport {
-  height: 480px;
+  height: 100%;
   width: 100vw;
   background: var(--colors-background-gray-100-main);
+  
   .modal-list__content {
-    height: 387px;
+    height: 100%;
+    overflow-y: auto; // Добавляем прокрутку, если контент превышает высоту
+    padding: 8px; // Отступы вокруг содержимого
+    
     .list-deport {
       width: calc(100% - 16px);
-      height: 379px;
       border: 1px solid var(--colors-outline-gray-900-border);
-      margin: 4px 8px;
       border-radius: 4px;
+      background: white; // Фоновый цвет для списка
+      margin: 0; // Убираем отступы у списка
+
       &__item {
-        border-bottom: 0.2px solid
-          var(--colors-outline-gray-900-border, #79747e);
+        border-bottom: 0.2px solid var(--colors-outline-gray-900-border, #79747e);
+        padding: 12px; // Отступы внутри элемента списка
+        cursor: pointer; // Курсор указывает на кликабельность
+        
+        &:hover {
+          background: var(--colors-background-gray-200-main); // Цвет при наведении
+        }
+
+        // Стили для текста
+        p {
+          margin: 0; // Убираем отступы у параграфа
+          font-size: 14px; // Размер шрифта
+          color: var(--colors-text-black); // Цвет текста
+        }
+      }
+
+      // Стили для пустого состояния
+      &__empty {
+        text-align: center;
+        padding: 20px;
+        color: var(--colors-text-gray-500); // Цвет для пустого состояния
       }
     }
   }
