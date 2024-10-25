@@ -4,7 +4,7 @@ import Close from "../../assets/Close";
 import Input from "../ui/Input/Input";
 import InputSpec from "../ui/InputSpec/InputSpec";
 import FolderInput from "../../assets/FolderInput";
-
+import { useVZN } from "../../contexts/VZNContext";
 import "./ModalFilterRate.scss";
 import Button from "../ui/Button/Button";
 import Footer from "../Footer/Footer";
@@ -12,20 +12,13 @@ import { useNavigate } from "react-router-dom";
 
 // СТРАНИЦА ФИЛЬТР ВЗН (РАСХОД)
 
-interface ModalFilterRateProps {
-  initInputSpecSenderValue: string;
-  setInitInputSpecSenderValue: (initInputSpecSenderValue: string) => void;
-}
-
-const ModalFilterRate: FC<ModalFilterRateProps> = ({
-  initInputSpecSenderValue,
-  setInitInputSpecSenderValue,
-}) => {
-  const [initInputNumberValue, setInitInputNumberValue] = useState("");
-  const [initInputDateValue, setInitInputDateValue] = useState("");
-
-  const [initInputSpecRecipientValue, setInitInputSpecRecipientValue] =
-    useState("");
+const ModalFilterRate: FC = () => {
+  const {
+    initInputSpecSenderValue,
+    setInitInputSpecSenderValue,
+    initInputSpecClaimerValue,
+    setInitInputSpecClaimerValue,
+  } = useVZN();
 
   const navigate = useNavigate();
 

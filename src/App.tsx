@@ -1,13 +1,15 @@
 import { FC } from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 import AppRouts from "./components/AppRouts/AppRouts";
-
-import "./App.scss";
+import { VZNProvider } from "./contexts/VZNContext";
 
 const App: FC = () => {
   return (
-    <div className="app">
-      <AppRouts />
-    </div>
+    <VZNProvider>
+      <Router>
+        <AppRouts />
+      </Router>
+    </VZNProvider>
   );
 };
 

@@ -9,24 +9,13 @@ import Input from "../ui/Input/Input";
 import LeftArrow from "../../assets/LeftArrow";
 import Button from "../ui/Button/Button";
 import { useNavigate } from "react-router-dom";
+import { useVZN } from "../../contexts/VZNContext";
 import Footer from "../Footer/Footer";
 
 // Страница Создать ВЗН (РАСХОД)
 
-interface AddVZNRateProps {
-  numberVZNValue: number;
-  setNumberVZNValue: (numberVZNValue: number) => void;
-}
-
-const AddVZNRate: FC<AddVZNRateProps> = ({
-  numberVZNValue,
-  setNumberVZNValue,
-}) => {
-  const [senderVZNValue, setSenderVZNValue] = useState("");
-  const [recipientVZNValue, setRecipientVZNValue] = useState("");
-  const [nameVZNValue, setNameVZNValue] = useState("");
-  const [nameRecVZNValue, setNameRecVZNValue] = useState("");
-  const [dateVZNValue, setDateVZNValue] = useState("");
+const AddVZNRate: FC = () => {
+  const { numberVZNValue, setNumberVZNValue } = useVZN();
 
   const vznCountValue = (value: number) => {
     setNumberVZNValue(value + 1);
