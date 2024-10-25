@@ -12,12 +12,18 @@ import { useNavigate } from "react-router-dom";
 
 // СТРАНИЦА ФИЛЬТР ВЗН (РАСХОД)
 
-interface ModalFilterRateProps {}
+interface ModalFilterRateProps {
+  initInputSpecSenderValue: string;
+  setInitInputSpecSenderValue: (initInputSpecSenderValue: string) => void;
+}
 
-const ModalFilterRate: FC<ModalFilterRateProps> = ({}) => {
+const ModalFilterRate: FC<ModalFilterRateProps> = ({
+  initInputSpecSenderValue,
+  setInitInputSpecSenderValue,
+}) => {
   const [initInputNumberValue, setInitInputNumberValue] = useState("");
   const [initInputDateValue, setInitInputDateValue] = useState("");
-  const [initInputSpecSenderValue, setInitInputSpecSenderValue] = useState("");
+
   const [initInputSpecRecipientValue, setInitInputSpecRecipientValue] =
     useState("");
 
@@ -56,6 +62,7 @@ const ModalFilterRate: FC<ModalFilterRateProps> = ({}) => {
               name={"sender"}
               setInitInputValue={setInitInputSpecSenderValue}
               inputIcon={<FolderInput />}
+              initInputValue={initInputSpecSenderValue}
             />
             <InputSpec
               type={"text"}
