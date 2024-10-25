@@ -11,7 +11,13 @@ interface Division {
   name: string;
 }
 
-const ModalListDepartments: FC = () => {
+interface ModalListDepartmentsProps {
+  onDevisionSelect: (division: string) => void;
+}
+
+const ModalListDepartments: FC<ModalListDepartmentsProps> = ({
+  onDevisionSelect,
+}) => {
   const navigate = useNavigate();
   const [divisions, setDivisions] = useState<Division[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -31,13 +37,16 @@ const ModalListDepartments: FC = () => {
     }
 
     try {
-      const response = await axios.post("http://92.55.15.91:8225/divisions/storeDivisions.avDivisions", {
-        authToken: authToken,
-        params: {
-          CurrentDivType: 105,
-          IsFilter: true,
-        },
-      });
+      const response = await axios.post(
+        "http://92.55.15.91:8225/divisions/storeDivisions.avDivisions",
+        {
+          authToken: authToken,
+          params: {
+            CurrentDivType: 105,
+            IsFilter: true,
+          },
+        }
+      );
 
       console.log("Ответ от сервера:", response.data); // Логируем ответ
 
@@ -74,10 +83,18 @@ const ModalListDepartments: FC = () => {
         <div className="list-deport">
           {loading && <p>Загрузка...</p>}
           {error && <p>{error}</p>}
-          {!loading && divisions.length === 0 && <p>Нет доступных подразделений</p>}
+          {!loading && divisions.length === 0 && (
+            <p>Нет доступных подразделений</p>
+          )}
           {divisions.map((division) => (
-            <div key={division.code} className="list-deport__item">
-              <p>{division.code}: {division.name}</p>
+            <div
+              key={division.code}
+              className="list-deport__item"
+              onClick={() => onDevisionSelect(division.name)}
+            >
+              <p>
+                {division.code}: {division.name}
+              </p>
             </div>
           ))}
         </div>

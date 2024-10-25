@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "../../page/Home/Home";
 import Setting from "../../page/Setting/Setting";
 import Tasks from "../../page/Tasks/Tasks";
@@ -24,6 +24,16 @@ import Operation from "../Operation/Operation";
 
 const AppRouts: FC = () => {
   const [numberVZNValue, setNumberVZNValue] = useState(0);
+  const [initInputSpecSenderValue, setInitInputSpecSenderValue] = useState("");
+  const [initInputSpecClaimerValue, setInitInputSpecClaimerValue] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleDevisionSelect = (devisionValue: string) => {
+    setInitInputSpecClaimerValue(devisionValue);
+    setInitInputSpecSenderValue(devisionValue);
+    navigate(-1);
+  };
 
   return (
     <div className="wrapper">
@@ -37,7 +47,17 @@ const AppRouts: FC = () => {
         <Route path="/vzn_receipt" element={<ModalVZNReceipt />} />
         <Route path="/vzn_receipt-info" element={<ModalVZNReceiptItem />} />
         <Route path="/vzn_receipt-element" element={<ReceiptElementVZN />} />
-        <Route path="/filter_rate" element={<ModalFilterRate />} />
+        <Route
+          path="/filter_rate"
+          element={
+            <ModalFilterRate
+              initInputSpecSenderValue={initInputSpecSenderValue}
+              setInitInputSpecSenderValue={setInitInputSpecSenderValue}
+              initInputSpecClaimerValue={initInputSpecClaimerValue}
+              setInitInputSpecClaimerValue={setInitInputSpecClaimerValue}
+            />
+          }
+        />
         <Route path="/vzn_rate" element={<ModalVZNRate />} />
         <Route path="/vzn_rate-info" element={<ModalVZNRateItem />} />
         <Route path="/vzn_rate-element" element={<RateElementVZN />} />
@@ -70,7 +90,12 @@ const AppRouts: FC = () => {
           path="/vzn_rate-edit-tmc-element"
           element={<ElementVZNEdit numberVZNValue={numberVZNValue} />}
         />
-        <Route path="/modal-list__deport" element={<ModalListDepartments />} />
+        <Route
+          path="/modal-list__deport"
+          element={
+            <ModalListDepartments onDevisionSelect={handleDevisionSelect} />
+          }
+        />
         <Route
           path="/operation"
           element={<Operation numberVZNValue={numberVZNValue} />}
