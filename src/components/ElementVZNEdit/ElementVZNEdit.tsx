@@ -9,7 +9,7 @@ import "./ElementVZNEdit.scss";
 import MoreDefault from "../../assets/MoreDefault";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
-import { BottomSheet } from "../ui/BottomSheet/BottomSheet";
+import { BottomSheetDelete } from "../ui/BottomSheet/BottomSheetDelete";
 import { Pagination } from "../Pagination/Pagination";
 
 // СТРАНИЦА РЕДАКТИРОВАНИЕ СОСТАВА
@@ -31,6 +31,14 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({ numberVZNValue }) => {
   const closeModal = () => {
     navigate(-1);
   };
+
+  const handleDelete = () => {
+    // Здесь добавь логику удаления элемента
+    console.log(`Элемент ВЗН №${numberVZNValue} удален`);
+    setBottomSheetActive(false);
+    closeModal();
+  };
+
   return (
     <>
       <div className={"modal-el-edit"}>
@@ -109,9 +117,10 @@ const ElementVZNEdit: FC<ElementVZNEditProps> = ({ numberVZNValue }) => {
             </div>
           </form>
         </div>
-        <BottomSheet
+        <BottomSheetDelete
           isOpen={bottomSheetActive}
           onClose={() => setBottomSheetActive(false)}
+          onDelete={handleDelete}
         />
       </div>
       <Footer />
