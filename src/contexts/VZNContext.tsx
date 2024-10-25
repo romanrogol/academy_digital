@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, FC, ReactNode } from "react";
+import { createContext, useContext, useState, FC, ReactNode } from "react";
 
 interface VZNContextType {
   numberVZNValue: number;
@@ -7,6 +7,7 @@ interface VZNContextType {
   setInitInputSpecSenderValue: (value: string) => void;
   initInputSpecClaimerValue: string;
   setInitInputSpecClaimerValue: (value: string) => void;
+  resetValues: () => void; // Метод для сброса значений
 }
 
 // Создаем контекст с начальным значением undefined
@@ -17,6 +18,13 @@ export const VZNProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [initInputSpecSenderValue, setInitInputSpecSenderValue] = useState("");
   const [initInputSpecClaimerValue, setInitInputSpecClaimerValue] = useState("");
 
+  // Функция для сброса значений
+  const resetValues = () => {
+    setNumberVZNValue(0);
+    setInitInputSpecSenderValue("");
+    setInitInputSpecClaimerValue("");
+  };
+
   return (
     <VZNContext.Provider
       value={{
@@ -26,6 +34,7 @@ export const VZNProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setInitInputSpecSenderValue,
         initInputSpecClaimerValue,
         setInitInputSpecClaimerValue,
+        resetValues, // Добавляем метод для сброса значений
       }}
     >
       {children}

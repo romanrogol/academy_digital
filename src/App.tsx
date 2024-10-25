@@ -1,15 +1,27 @@
 import { FC } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import AppRouts from "./components/AppRouts/AppRouts";
-import { VZNProvider } from "./contexts/VZNContext";
+import { AuthProvider } from './contexts/AuthContext';
+import { DivisionsProvider } from './contexts/DivisionsContext';
+import { VznListProvider } from "./contexts/VZNListContext"; 
+import { VznDetailsProvider } from "./contexts/VZNDetailContext"; 
+import { TypeBoProvider } from "./contexts/TypeBOContext";  
+import { VZNProvider } from "./contexts/VZNContext"; 
 
 const App: FC = () => {
   return (
-    <VZNProvider>
-      <Router>
-        <AppRouts />
-      </Router>
-    </VZNProvider>
+    <AuthProvider>
+      <DivisionsProvider>
+        <VznListProvider> 
+          <VznDetailsProvider> 
+            <TypeBoProvider> 
+              <VZNProvider> 
+                <AppRouts />
+              </VZNProvider>
+            </TypeBoProvider>
+          </VznDetailsProvider>
+        </VznListProvider>
+      </DivisionsProvider>
+    </AuthProvider>
   );
 };
 

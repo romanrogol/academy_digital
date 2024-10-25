@@ -10,7 +10,7 @@ const BurgerIcon: FC = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <g clip-path="url(#clip0_813_11151)">
+        <g clipPath="url(#clip0_813_11151)">
           <path
             d="M4.5 12H20.5"
             stroke="white"

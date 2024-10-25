@@ -1,19 +1,16 @@
-import { FormEvent, useState, FC } from "react";
+// src/components/Authorization/Authorization.tsx
+import { FormEvent, useState, FC, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext"; // Импортируем контекст
 import "./Authorization.scss";
 
 import Button from "../ui/Button/Button";
 import Input from "../ui/Input/Input";
-import Footer from "../Footer/Footer";
 import AuthLogo from "../../assets/AuthLogo";
 
-interface AuthorizationProps {
-  isAuth: boolean;
-  setIsAuth: (isAuth: boolean) => void;
-}
-
-const Authorization: FC<AuthorizationProps> = ({ isAuth, setIsAuth }) => {
+const Authorization: FC = () => {
+  const { isAuth, setIsAuth } = useContext(AuthContext)!; // Используем контекст
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
@@ -41,6 +38,7 @@ const Authorization: FC<AuthorizationProps> = ({ isAuth, setIsAuth }) => {
       if (authToken) {
         localStorage.setItem("authToken", authToken);
         setIsAuth(true);
+        navigate("/dashboard"); // Перенаправление на нужную страницу после авторизации
       } else {
         setError("Токен не найден в ответе.");
       }
@@ -51,9 +49,7 @@ const Authorization: FC<AuthorizationProps> = ({ isAuth, setIsAuth }) => {
   };
 
   return (
-    <div
-      className={isAuth ? "authorization-wrap" : "authorization-wrap active"}
-    >
+    <div className={isAuth ? "authorization-wrap" : "authorization-wrap active"}>
       <div className="authorization-main">
         <div className="authorization-main-logo">
           <AuthLogo />
@@ -68,6 +64,7 @@ const Authorization: FC<AuthorizationProps> = ({ isAuth, setIsAuth }) => {
             type="text"
             name="loginInput"
             setInitInputValue={setLogin}
+            autoComplete="username" 
           />
           <Input
             htmlFor="passwordInput"
@@ -75,6 +72,7 @@ const Authorization: FC<AuthorizationProps> = ({ isAuth, setIsAuth }) => {
             type="password"
             name="passwordInput"
             setInitInputValue={setPassword}
+            autoComplete="current-password" 
           />
           <Button
             className={"form__btn button__primary"}

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, KeyboardEvent } from "react";
+import { ChangeEvent, FC } from "react";
 
 import "./Input.scss";
 
@@ -9,6 +9,7 @@ interface InputProps {
   name: string;
   textSpan?: string;
   setInitInputValue: (value: string) => void;
+  autoComplete?: string; 
 }
 
 const Input: FC<InputProps> = ({
@@ -18,6 +19,7 @@ const Input: FC<InputProps> = ({
   name,
   textSpan,
   setInitInputValue,
+  autoComplete, 
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInitInputValue(e.target.value);
@@ -34,6 +36,7 @@ const Input: FC<InputProps> = ({
         id={htmlFor}
         className="form__type-input"
         onChange={handleChange}
+        autoComplete={autoComplete} 
       />
       <span className="form__error">{textSpan}</span>
     </div>

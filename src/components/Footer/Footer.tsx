@@ -33,14 +33,14 @@ const Footer: FC<FooterProps> = ({}) => {
               <span className="nav__link-text">Меню</span>
             </Link>
           </li>
-          <Link className="nav__item" to={"/scan"}>
-            <a className="nav__link link-scanner">
+          <li className="nav__item">
+            <Link className="nav__link link-scanner" to={"/scan"}>
               <ScanDefault />
               <span className="nav__link-text">Сканер</span>
-            </a>
-          </Link>
+            </Link>
+          </li>
           <li onClick={() => goBack()} className="nav__item">
-            <a className="nav__link link-back">
+            <a className="nav__link link-back" role="button" onClick={goBack}>
               <ArrowBack />
               <span className="nav__link-text">Назад</span>
             </a>
