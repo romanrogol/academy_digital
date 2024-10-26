@@ -24,7 +24,7 @@ const DivisionsContext = createContext<DivisionsContextType | undefined>(undefin
 export const DivisionsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [divisions, setDivisions] = useState<Division[]>([]);
   const [selectedDivision, setSelectedDivision] = useState<string | null>(null);
-  const [activeInputs, setActiveInputs] = useState<string[]>([]); // Инициализация массива активных инпутов
+  const [activeInputs, setActiveInputs] = useState<string[]>([]); 
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
