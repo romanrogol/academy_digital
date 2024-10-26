@@ -1,23 +1,26 @@
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent } from "react";
 import ModalHeader from "../ModalHeader/ModalHeader";
 import Close from "../../assets/Close";
 import Input from "../ui/Input/Input";
 import InputSpec from "../ui/InputSpec/InputSpec";
 import FolderInput from "../../assets/FolderInput";
-import { useVZN } from "../../contexts/VZNContext";
+import { useVZN } from "../../contexts/VZNContext"; 
+import { useDivisions } from "../../contexts/DivisionsContext"; 
 import "./ModalFilterRate.scss";
 import Button from "../ui/Button/Button";
 import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 
-// СТРАНИЦА ФИЛЬТР ВЗН (РАСХОД)
-
 const ModalFilterRate: FC = () => {
   const {
     initInputSpecSenderValue,
     setInitInputSpecSenderValue,
-    initInputSpecClaimerValue,
-    setInitInputSpecClaimerValue,
+    initInputSpecRecipientValue, // Теперь используем из VZNContext
+    setInitInputSpecRecipientValue,
+    initInputNumberValue, // Теперь используем из VZNContext
+    setInitInputNumberValue,
+    initInputDateValue, // Теперь используем из VZNContext
+    setInitInputDateValue,
   } = useVZN();
 
   const navigate = useNavigate();
@@ -28,7 +31,7 @@ const ModalFilterRate: FC = () => {
   };
 
   const closeModal = () => {
-    navigate("/filter_rate");
+    navigate(-1);
   };
 
   return (
@@ -47,6 +50,7 @@ const ModalFilterRate: FC = () => {
               textLabel={"Номер ВЗН"}
               name={"numberVZN"}
               setInitInputValue={setInitInputNumberValue}
+              initInputValue={initInputNumberValue} // Добавлено
             />
             <InputSpec
               type={"text"}
@@ -64,6 +68,7 @@ const ModalFilterRate: FC = () => {
               name={"recipient"}
               setInitInputValue={setInitInputSpecRecipientValue}
               inputIcon={<FolderInput />}
+              initInputValue={initInputSpecRecipientValue}
             />
             <Input
               type={"text"}
@@ -71,6 +76,7 @@ const ModalFilterRate: FC = () => {
               textLabel={"Дата принятия (период)"}
               name={"date"}
               setInitInputValue={setInitInputDateValue}
+              initInputValue={initInputDateValue}
             />
             <div className="wrapper__btn">
               <div>
@@ -84,6 +90,7 @@ const ModalFilterRate: FC = () => {
                 <Button
                   buttonText={"Отмена"}
                   className={"button__secondary form__btn"}
+                  onClick={closeModal} // Закрываем модалку при нажатии
                 />
               </div>
             </div>

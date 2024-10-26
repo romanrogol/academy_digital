@@ -1,5 +1,4 @@
 import { ChangeEvent, FC } from "react";
-
 import "./Input.scss";
 
 interface InputProps {
@@ -7,10 +6,10 @@ interface InputProps {
   textLabel: string;
   type: string;
   name: string;
-  textSpan?: string;
-  setInitInputValue: (value: string) => void;
-  autoComplete?: string; 
+  setInitInputValue: (value: number) => void; 
+  initInputValue: number; 
 }
+
 
 const Input: FC<InputProps> = ({
   htmlFor,
@@ -22,14 +21,13 @@ const Input: FC<InputProps> = ({
   autoComplete, 
 }) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInitInputValue(e.target.value);
+    // Приводим значение к string
+    setInitInputValue(e.target.value); // Передаем строку
   };
 
   return (
     <div className="form__field-container">
-      <label htmlFor={htmlFor} className="form__label">
-        {textLabel}
-      </label>
+      <label htmlFor={htmlFor} className="form__label">{textLabel}</label>
       <input
         type={type}
         name={name}

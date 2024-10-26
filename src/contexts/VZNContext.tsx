@@ -1,3 +1,4 @@
+// src/context/VZNContext.tsx
 import { createContext, useContext, useState, FC, ReactNode } from "react";
 
 interface VZNContextType {
@@ -7,22 +8,32 @@ interface VZNContextType {
   setInitInputSpecSenderValue: (value: string) => void;
   initInputSpecClaimerValue: string;
   setInitInputSpecClaimerValue: (value: string) => void;
+  initInputSpecRecipientValue: string; // Добавлено
+  setInitInputSpecRecipientValue: (value: string) => void; // Добавлено
+  initInputNumberValue: number; // Добавлено
+  setInitInputNumberValue: (value: number) => void; // Добавлено
+  initInputDateValue: string; // Добавлено
+  setInitInputDateValue: (value: string) => void; // Добавлено
   resetValues: () => void; // Метод для сброса значений
 }
 
-// Создаем контекст с начальным значением undefined
 const VZNContext = createContext<VZNContextType | undefined>(undefined);
 
 export const VZNProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [numberVZNValue, setNumberVZNValue] = useState(0);
   const [initInputSpecSenderValue, setInitInputSpecSenderValue] = useState("");
   const [initInputSpecClaimerValue, setInitInputSpecClaimerValue] = useState("");
+  const [initInputSpecRecipientValue, setInitInputSpecRecipientValue] = useState(""); // Добавлено
+  const [initInputNumberValue, setInitInputNumberValue] = useState<number>(0);
+  const [initInputDateValue, setInitInputDateValue] = useState(""); // Добавлено
 
-  // Функция для сброса значений
   const resetValues = () => {
     setNumberVZNValue(0);
     setInitInputSpecSenderValue("");
     setInitInputSpecClaimerValue("");
+    setInitInputSpecRecipientValue(""); // Добавлено
+    setInitInputNumberValue(0); // Добавлено
+    setInitInputDateValue(""); // Добавлено
   };
 
   return (
@@ -34,7 +45,13 @@ export const VZNProvider: FC<{ children: ReactNode }> = ({ children }) => {
         setInitInputSpecSenderValue,
         initInputSpecClaimerValue,
         setInitInputSpecClaimerValue,
-        resetValues, // Добавляем метод для сброса значений
+        initInputSpecRecipientValue,
+        setInitInputSpecRecipientValue,
+        initInputNumberValue,
+        setInitInputNumberValue,
+        initInputDateValue,
+        setInitInputDateValue,
+        resetValues,
       }}
     >
       {children}
@@ -42,7 +59,6 @@ export const VZNProvider: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-// Хук для доступа к данным контекста
 export const useVZN = () => {
   const context = useContext(VZNContext);
   if (!context) {

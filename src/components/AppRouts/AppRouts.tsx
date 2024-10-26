@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "../../page/Home/Home";
 import Setting from "../../page/Setting/Setting";
@@ -23,11 +23,8 @@ import ModalListDepartments from "../ModalListDepartments/ModalListDepartments";
 import Operation from "../Operation/Operation";
 
 const AppRouts: FC = () => {
+  const [numberVZNValue, setNumberVZNValue] = useState(0);
   const navigate = useNavigate();
-  const handleDivisionSelect = (divisionName: string) => {
-    navigate(-1);
-    // Дальнейшая логика работы с выбранным подразделением
-  };
 
   return (
     <div className="wrapper">
@@ -46,13 +43,13 @@ const AppRouts: FC = () => {
         <Route path="/vzn_rate-info" element={<ModalVZNRateItem />} />
         <Route path="/vzn_rate-element" element={<RateElementVZN />} />
         <Route path="/vzn_rate-add-vzn" element={<AddVZNRate />} />
-        <Route path="/vzn_rate-add-vzn-info" element={<ModalVZNAddRateItem />} />
-        <Route path="/vzn_rate-add-tmc-add" element={<ElementVZNSearch />} />
-        <Route path="/vzn_rate-add-tmc-choice" element={<ElementVZNChoice />} />
-        <Route path="/vzn_rate-add-tmc-element" element={<ElementVZNAdd />} />
-        <Route path="/vzn_rate-edit-tmc-element" element={<ElementVZNEdit />} />
-        <Route path="/modal-list__deport" element={<ModalListDepartments onDevisionSelect={handleDivisionSelect} />} />
-        <Route path="/operation" element={<Operation />} />
+        <Route path="/vzn_rate-add-vzn-info" element={<ModalVZNAddRateItem numberVZNValue={numberVZNValue} />} />
+        <Route path="/vzn_rate-add-tmc-add" element={<ElementVZNSearch numberVZNValue={numberVZNValue} />} />
+        <Route path="/vzn_rate-add-tmc-choice" element={<ElementVZNChoice numberVZNValue={numberVZNValue} />} />
+        <Route path="/vzn_rate-add-tmc-element" element={<ElementVZNAdd numberVZNValue={numberVZNValue} />} />
+        <Route path="/vzn_rate-edit-tmc-element" element={<ElementVZNEdit numberVZNValue={numberVZNValue} />} />
+        <Route path="/modal-list__deport" element={<ModalListDepartments />} /> {/* Убрали onDevisionSelect */}
+        <Route path="/operation" element={<Operation numberVZNValue={numberVZNValue} />} />
       </Routes>
     </div>
   );

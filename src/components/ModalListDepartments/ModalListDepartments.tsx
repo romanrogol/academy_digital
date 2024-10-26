@@ -2,6 +2,8 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDivisions } from "../../contexts/DivisionsContext";
 import ModalHeader from "../ModalHeader/ModalHeader";
+import Close from "../../assets/Close";
+import Footer from "../Footer/Footer";
 import "./ModalListDepartments.scss";
 
 const ModalListDepartments: FC = () => {
@@ -17,7 +19,7 @@ const ModalListDepartments: FC = () => {
 
   return (
     <div className="modal-list__deport">
-      <ModalHeader headerTitle="Список подразделений" goBack={closeModal} />
+      <ModalHeader headerTitle="Список подразделений" icon={<Close />} goBack={closeModal} />
       <div className="modal-list__content">
         {loading ? <p>Загрузка...</p> : error ? <p>{error}</p> : (
           divisions.map((division) => (
@@ -31,8 +33,10 @@ const ModalListDepartments: FC = () => {
           ))
         )}
       </div>
+      <Footer />
     </div>
   );
 };
 
 export default ModalListDepartments;
+

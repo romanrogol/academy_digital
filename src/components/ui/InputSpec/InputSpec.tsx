@@ -9,8 +9,8 @@ interface InputSpecProps {
   type: string;
   name: string;
   textSpan?: string;
-  initInputValue: string | number;
-  setInitInputValue: (value: string | number) => void;
+  initInputValue: string | number; // Здесь можем оставить как string | number
+  setInitInputValue: (value: string | number) => void; // Оставляем как string | number
   inputIcon: ReactNode;
 }
 
@@ -44,12 +44,12 @@ const InputSpec: FC<InputSpecProps> = ({
     <div className="form__field-container">
       <label htmlFor={htmlFor} className="form__label">{textLabel}</label>
       <input
-        value={initInputValue}
+        value={initInputValue} // Предполагается, что это строка
         type={type}
         name={name}
         id={htmlFor}
         className="form__type-input-spec"
-        onChange={(e: ChangeEvent<HTMLInputElement>) => setInitInputValue(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setInitInputValue(e.target.value)} // Передаем строку
         disabled
       />
       <div onClick={handleClick} className="input-spec__icon">
