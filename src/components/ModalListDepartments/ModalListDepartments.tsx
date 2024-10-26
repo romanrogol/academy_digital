@@ -1,54 +1,36 @@
-// src/components/ModalListDepartments/ModalListDepartments.tsx
 import { FC } from "react";
-import ModalHeader from "../ModalHeader/ModalHeader";
-import Close from "../../assets/Close";
-import Footer from "../Footer/Footer";
-import "./ModalListDepartments.scss";
-import { useDivisions } from "../../contexts/DivisionsContext";
 import { useNavigate } from "react-router-dom";
+import { useDivisions } from "../../contexts/DivisionsContext";
+import ModalHeader from "../ModalHeader/ModalHeader";
+import "./ModalListDepartments.scss";
 
-interface ModalListDepartmentsProps {
-  onDevisionSelect: (division: string) => void;
-}
-
-const ModalListDepartments: FC<ModalListDepartmentsProps> = ({
-  onDevisionSelect,
-}) => {
+const ModalListDepartments: FC = () => {
+  const { divisions, loading, error, setSelectedDivision } = useDivisions();
   const navigate = useNavigate();
-  const { divisions, loading, error } = useDivisions(); // Используем контекст
 
-  const closeModal = () => {
-    navigate(-1);
+  const closeModal = () => navigate(-1);
+
+  const handleDivisionSelect = (division: string) => {
+    setSelectedDivision(division);
+    closeModal();
   };
 
   return (
-    <div className={"modal-list__deport"}>
-      <ModalHeader
-        headerTitle={"Список подразделений"}
-        icon={<Close />}
-        goBack={closeModal}
-      />
+    <div className="modal-list__deport">
+      <ModalHeader headerTitle="Список подразделений" goBack={closeModal} />
       <div className="modal-list__content">
-        <div className="list-deport">
-          {loading && <p>Загрузка...</p>}
-          {error && <p>{error}</p>}
-          {!loading && divisions.length === 0 && (
-            <p>Нет доступных подразделений</p>
-          )}
-          {divisions.map((division) => (
+        {loading ? <p>Загрузка...</p> : error ? <p>{error}</p> : (
+          divisions.map((division) => (
             <div
               key={division.code}
               className="list-deport__item"
-              onClick={() => onDevisionSelect(division.name)}
+              onClick={() => handleDivisionSelect(division.name)}
             >
-              <p>
-                {division.code}: {division.name}
-              </p>
+              {division.name}
             </div>
-          ))}
-        </div>
+          ))
+        )}
       </div>
-      <Footer />
     </div>
   );
 };

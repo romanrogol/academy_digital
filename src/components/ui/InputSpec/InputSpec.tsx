@@ -1,7 +1,7 @@
-import { ChangeEvent, FC, ReactNode } from "react";
-
-import "./InputSpec.scss";
+import { ChangeEvent, FC, ReactNode, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDivisions } from "../../../contexts/DivisionsContext";
+import "./InputSpec.scss";
 
 interface InputSpecProps {
   htmlFor: string;
@@ -9,12 +9,9 @@ interface InputSpecProps {
   type: string;
   name: string;
   textSpan?: string;
+  initInputValue: string | number;
   setInitInputValue: (value: string | number) => void;
   inputIcon: ReactNode;
-  modalListDepartActive: boolean;
-  setModalListDepartActive: (modalListDepartActive: boolean) => void;
-  initInputValue: string | number;
-  vznCountValue: (value: number) => void;
 }
 
 const InputSpec: FC<InputSpecProps> = ({
@@ -23,40 +20,39 @@ const InputSpec: FC<InputSpecProps> = ({
   type,
   name,
   textSpan,
+  initInputValue,
   setInitInputValue,
   inputIcon,
-  initInputValue,
-  vznCountValue,
 }) => {
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInitInputValue(e.target.value);
-  };
-
+  const { selectedDivision, setSelectedDivision, activeInputs, addActiveInput, removeActiveInput } = useDivisions();
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    if (typeof initInputValue === "number") {
-      vznCountValue(initInputValue);
-      return;
+  useEffect(() => {
+    if (activeInputs.includes(name) && selectedDivision) {
+      setInitInputValue(selectedDivision);
+      setSelectedDivision(''); // Сбрасываем значение после отображения
+      removeActiveInput(name); // Удаляем инпут из активных после установки значения
     }
-    navigate("/modal-list__deport");
+  }, [selectedDivision, activeInputs, name, setInitInputValue, setSelectedDivision, removeActiveInput]);
+  
+  const handleClick = () => {
+    addActiveInput(name); // Устанавливаем активный инпут
+    navigate("/modal-list__deport", { state: { inputName: name } }); // Передаем имя инпута
   };
-
+  
   return (
     <div className="form__field-container">
-      <label htmlFor={htmlFor} className="form__label">
-        {textLabel}
-      </label>
+      <label htmlFor={htmlFor} className="form__label">{textLabel}</label>
       <input
         value={initInputValue}
         type={type}
         name={name}
         id={htmlFor}
         className="form__type-input-spec"
-        onChange={handleChange}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setInitInputValue(e.target.value)}
         disabled
       />
-      <div onClick={() => handleClick()} className="input-spec__icon">
+      <div onClick={handleClick} className="input-spec__icon">
         {inputIcon}
       </div>
       <span className="form__error">{textSpan}</span>

@@ -12,12 +12,19 @@ interface DivisionsContextType {
   loading: boolean;
   error: string | null;
   fetchDivisions: () => Promise<void>;
+  selectedDivision: string | null;
+  setSelectedDivision: (division: string) => void;
+  activeInputs: string[]; // Массив активных инпутов
+  addActiveInput: (input: string) => void;
+  removeActiveInput: (input: string) => void;
 }
 
 const DivisionsContext = createContext<DivisionsContextType | undefined>(undefined);
 
 export const DivisionsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [divisions, setDivisions] = useState<Division[]>([]);
+  const [selectedDivision, setSelectedDivision] = useState<string | null>(null);
+  const [activeInputs, setActiveInputs] = useState<string[]>([]); // Инициализация массива активных инпутов
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -58,18 +65,37 @@ export const DivisionsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     }
   };
 
+  const addActiveInput = (input: string) => {
+    setActiveInputs((prev) => [...new Set([...prev, input])]); // Добавляем инпут, если его нет
+  };
+
+  const removeActiveInput = (input: string) => {
+    setActiveInputs((prev) => prev.filter((item) => item !== input)); // Удаляем инпут
+  };
+
   useEffect(() => {
     fetchDivisions();
   }, []);
 
   return (
-    <DivisionsContext.Provider value={{ divisions, loading, error, fetchDivisions }}>
+    <DivisionsContext.Provider
+      value={{
+        divisions,
+        loading,
+        error,
+        fetchDivisions,
+        selectedDivision,
+        setSelectedDivision,
+        activeInputs,
+        addActiveInput,
+        removeActiveInput,
+      }}
+    >
       {children}
     </DivisionsContext.Provider>
   );
 };
 
-// Хук для доступа к данным контекста
 export const useDivisions = () => {
   const context = useContext(DivisionsContext);
   if (!context) {

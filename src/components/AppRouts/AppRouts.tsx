@@ -24,6 +24,10 @@ import Operation from "../Operation/Operation";
 
 const AppRouts: FC = () => {
   const navigate = useNavigate();
+  const handleDivisionSelect = (divisionName: string) => {
+    navigate(-1);
+    // Дальнейшая логика работы с выбранным подразделением
+  };
 
   return (
     <div className="wrapper">
@@ -47,7 +51,7 @@ const AppRouts: FC = () => {
         <Route path="/vzn_rate-add-tmc-choice" element={<ElementVZNChoice />} />
         <Route path="/vzn_rate-add-tmc-element" element={<ElementVZNAdd />} />
         <Route path="/vzn_rate-edit-tmc-element" element={<ElementVZNEdit />} />
-        <Route path="/modal-list__deport" element={<ModalListDepartments />} />
+        <Route path="/modal-list__deport" element={<ModalListDepartments onDevisionSelect={handleDivisionSelect} />} />
         <Route path="/operation" element={<Operation />} />
       </Routes>
     </div>

@@ -38,7 +38,7 @@ const Authorization: FC = () => {
       if (authToken) {
         localStorage.setItem("authToken", authToken);
         setIsAuth(true);
-        navigate("/dashboard"); // Перенаправление на нужную страницу после авторизации
+        navigate("./"); // Перенаправление на нужную страницу после авторизации
       } else {
         setError("Токен не найден в ответе.");
       }
